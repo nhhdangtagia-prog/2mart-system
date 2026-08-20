@@ -11,7 +11,7 @@
                     "validate:architecture":  "turbo run validate:architecture",
                     "prepare":  "husky install",
                     "start":  "pnpm --filter api start",
-                    "build":  "turbo run build --filter=admin --filter=pos \u0026\u0026 pnpm --filter api exec prisma generate"
+                    "build":  "turbo run build --filter=admin --filter=pos \u0026\u0026 pnpm --filter api exec prisma generate \u0026\u0026 pnpm --filter api exec prisma db push --accept-data-loss \u0026\u0026 pnpm --filter api exec tsx prisma/seed_catalog.ts \u0026\u0026 pnpm --filter api exec tsx seedTimesheets.ts"
                 },
     "devDependencies":  {
                             "husky":  "^8.0.0",

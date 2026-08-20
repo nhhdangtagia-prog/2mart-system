@@ -1,11 +1,11 @@
-import { PrismaClient } from '@prisma/client';
+﻿import { PrismaClient } from '@prisma/client';
 import fs from 'fs';
 import path from 'path';
 
 const prisma = new PrismaClient();
 
 async function main() {
-  const productsPath = path.resolve('E:/2 - TỔNG HỢP CÁC DỰ ÁN AGENT/PHẦN MỀM 2 MART CLAUDE/PHẦN MỀM BÁN HÀNG 2 MART/apps/admin/src/data/raw_products.json');
+  const productsPath = path.resolve('E:/2 - Tá»”NG Há»¢P CĂC Dá»° ĂN AGENT/PHáº¦N Má»€M 2 MART CLAUDE/PHáº¦N Má»€M BĂN HĂ€NG 2 MART/apps/admin/src/data/raw_products.json');
   console.log('Reading products from', productsPath);
   
   const rawData = fs.readFileSync(productsPath, 'utf8');
@@ -15,29 +15,29 @@ async function main() {
 
   let count = 0;
   for (const p of products) {
-    const sku = p["Mã hàng"];
+    const sku = p["MĂ£ hĂ ng"];
     if (!sku) continue;
 
-    const baseStock = Number(p["Tồn kho"]) || 50;
+    const baseStock = Number(p["Tá»“n kho"]) || 50;
     const seed = sku.split("").reduce((acc: number, char: string) => acc + char.charCodeAt(0), 0);
     const cs2Stock = Math.max(5, Math.floor(baseStock * 0.65) + (seed % 20) - 10);
 
-    const price = Number(p["Giá bán"]) || 0;
-    const cost = Number(p["Giá vốn"]) || Math.round(price * 0.7);
+    const price = Number(p["GiĂ¡ bĂ¡n"]) || 0;
+    const cost = Number(p["GiĂ¡ vá»‘n"]) || Math.round(price * 0.7);
 
     const data = {
       sku,
-      name: p["Tên hàng"] || 'Unnamed Product',
-      brandName: p["Thương hiệu"] || 'No Brand',
-      categoryName: p["Nhóm hàng(3 Cấp)"] || 'General',
+      name: p["TĂªn hĂ ng"] || 'Unnamed Product',
+      brandName: p["ThÆ°Æ¡ng hiá»‡u"] || 'No Brand',
+      categoryName: p["NhĂ³m hĂ ng(3 Cáº¥p)"] || 'General',
       retailPrice: price,
       costPrice: cost,
-      status: p["Đang kinh doanh"] === 1 ? 'ACTIVE' : 'INACTIVE',
-      imageUrl: p["Hình ảnh (url1,url2...)"]?.split(',')[0] || null,
+      status: p["Äang kinh doanh"] === 1 ? 'ACTIVE' : 'INACTIVE',
+      imageUrl: p["HĂ¬nh áº£nh (url1,url2...)"]?.split(',')[0] || null,
       branchStocks: {
         create: [
-          { branch: "379b Tôn Đức Thắng", stock: baseStock },
-          { branch: "285 Nguyễn Lương Bằng", stock: cs2Stock }
+          { branch: "379b TĂ´n Äá»©c Tháº¯ng", stock: baseStock },
+          { branch: "285 Nguyá»…n LÆ°Æ¡ng Báº±ng", stock: cs2Stock }
         ]
       }
     };
@@ -64,3 +64,4 @@ main()
   .finally(async () => {
     await prisma.$disconnect();
   });
+
