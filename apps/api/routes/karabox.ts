@@ -1,6 +1,6 @@
-import { Router } from 'express';
+﻿import { Router } from 'express';
 import { PrismaClient } from '@prisma/client';
-import { sendKaraboxCheckoutNotification } from '../src/telegramBot';
+import { sendKaraboxCheckoutNotification } from '../src/telegramBot.js';
 
 const router = Router();
 const prisma = new PrismaClient();
@@ -99,7 +99,7 @@ router.post('/sessions/checkout', async (req, res) => {
     
     // Get room info first for the notification
     const currentSession = await prisma.karaboxSession.findUnique({ where: { id } });
-    let roomName = 'Phòng';
+    let roomName = 'PhĂ²ng';
     if (currentSession) {
       const room = await prisma.karaboxRoom.findUnique({ where: { id: currentSession.roomId } });
       if (room) roomName = room.name;
@@ -207,3 +207,5 @@ router.delete('/sessions/:id', async (req, res) => {
 });
 
 export default router;
+
+

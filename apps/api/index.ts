@@ -1,4 +1,4 @@
-import express from 'express';
+﻿import express from 'express';
 import cors from 'cors';
 import dotenv from 'dotenv';
 import { PrismaClient } from '@prisma/client';
@@ -25,7 +25,7 @@ app.use(cors());
 app.use(express.json({ limit: '50mb' }));
 app.use(express.urlencoded({ limit: '50mb', extended: true }));
 
-// Phục vụ các file tĩnh của Frontend (Vite build)
+// Phá»¥c vá»¥ cĂ¡c file tÄ©nh cá»§a Frontend (Vite build)
 const frontendDistPath = path.join(__dirname, '../admin/dist');
 app.use(express.static(frontendDistPath, {
   setHeaders: (res, path, stat) => {
@@ -37,12 +37,12 @@ app.use(express.static(frontendDistPath, {
   }
 }));
 
-// Kiểm tra kết nối
+// Kiá»ƒm tra káº¿t ná»‘i
 app.get('/api/health', (req, res) => {
   res.json({ status: 'ok', message: 'Backend is running!' });
 });
 
-// APIs cho Nhân viên
+// APIs cho NhĂ¢n viĂªn
 app.get('/api/employees', async (req, res) => {
   try {
     const employees = await prisma.employee.findMany();
@@ -187,13 +187,13 @@ app.put('/api/timesheets/:id', async (req, res) => {
   }
 });
 
-// Bảng lương
+// Báº£ng lÆ°Æ¡ng
 app.get('/api/payrolls', async (req, res) => {
   try {
     const payrolls = await prisma.payrollSheet.findMany({
       include: { items: true, payments: true }
     });
-    // Trả về theo định dạng JSON như trước
+    // Tráº£ vá» theo Ä‘á»‹nh dáº¡ng JSON nhÆ° trÆ°á»›c
     res.json(payrolls);
   } catch (error) {
     res.status(500).json({ error: 'Failed to fetch payrolls' });
@@ -232,32 +232,32 @@ app.post('/api/payrolls/:id/notify', async (req, res) => {
     });
     
     if (!sheet) {
-      return res.status(404).json({ error: "Bảng lương không tồn tại" });
+      return res.status(404).json({ error: "Báº£ng lÆ°Æ¡ng khĂ´ng tá»“n táº¡i" });
     }
     
     const item = sheet.items.find((i: any) => i.employeeId === employeeId);
     if (!item) {
-      return res.status(404).json({ error: "Không tìm thấy phiếu lương của nhân viên này" });
+      return res.status(404).json({ error: "KhĂ´ng tĂ¬m tháº¥y phiáº¿u lÆ°Æ¡ng cá»§a nhĂ¢n viĂªn nĂ y" });
     }
     
     const formatter = new Intl.NumberFormat('vi-VN', { style: 'currency', currency: 'VND' });
-    const msg = `🧾 *PHIẾU LƯƠNG NHÂN VIÊN*\n` +
-      `Kỳ lương: ${sheet.periodRange}\n` +
-      `Nhân viên: *${item.employeeName}*\n` +
-      `Mã NV: ${item.employeeCode}\n` +
+    const msg = `đŸ§¾ *PHIáº¾U LÆ¯Æ NG NHĂ‚N VIĂN*\n` +
+      `Ká»³ lÆ°Æ¡ng: ${sheet.periodRange}\n` +
+      `NhĂ¢n viĂªn: *${item.employeeName}*\n` +
+      `MĂ£ NV: ${item.employeeCode}\n` +
       `---------------------------------\n` +
-      `Lương cơ bản: ${formatter.format(item.basicSalary)}\n` +
-      `Lương tăng ca: ${formatter.format(item.overtimeSalary)}\n` +
-      `Phụ cấp ca đêm: ${formatter.format(item.nightShiftAllowance || 0)}\n` +
-      `Phụ cấp khác: ${formatter.format(item.allowances)}\n` +
-      `Thưởng: ${formatter.format(item.bonuses)}\n` +
-      `Tổng thu nhập: ${formatter.format(item.totalIncome)}\n` +
+      `LÆ°Æ¡ng cÆ¡ báº£n: ${formatter.format(item.basicSalary)}\n` +
+      `LÆ°Æ¡ng tÄƒng ca: ${formatter.format(item.overtimeSalary)}\n` +
+      `Phá»¥ cáº¥p ca Ä‘Ăªm: ${formatter.format(item.nightShiftAllowance || 0)}\n` +
+      `Phá»¥ cáº¥p khĂ¡c: ${formatter.format(item.allowances)}\n` +
+      `ThÆ°á»Ÿng: ${formatter.format(item.bonuses)}\n` +
+      `Tá»•ng thu nháº­p: ${formatter.format(item.totalIncome)}\n` +
       `---------------------------------\n` +
-      `Khấu trừ: ${formatter.format(item.deductions)}\n` +
-      `Tạm ứng: ${formatter.format(item.advanceAmount || 0)}\n` +
-      `*THỰC LÃNH: ${formatter.format(item.netSalary)}*\n` +
-      `Đã thanh toán: ${formatter.format(item.paidAmount)}\n` +
-      `Còn lại: ${formatter.format(item.netSalary - item.paidAmount)}\n`;
+      `Kháº¥u trá»«: ${formatter.format(item.deductions)}\n` +
+      `Táº¡m á»©ng: ${formatter.format(item.advanceAmount || 0)}\n` +
+      `*THá»°C LĂƒNH: ${formatter.format(item.netSalary)}*\n` +
+      `ÄĂ£ thanh toĂ¡n: ${formatter.format(item.paidAmount)}\n` +
+      `CĂ²n láº¡i: ${formatter.format(item.netSalary - item.paidAmount)}\n`;
 
     await sendTelegramNotificationRaw(msg);
     res.json({ success: true });
@@ -300,7 +300,7 @@ app.post('/api/payrolls/sync', async (req, res) => {
     const existingSheets = await prisma.payrollSheet.findMany({ select: { id: true, code: true } });
     const dbCodeToId = new Map(existingSheets.map(s => [s.code, s.id]));
 
-    // Tự động sửa lỗi trùng lặp mã bảng lương (Unique constraint failed on `code`)
+    // Tá»± Ä‘á»™ng sá»­a lá»—i trĂ¹ng láº·p mĂ£ báº£ng lÆ°Æ¡ng (Unique constraint failed on `code`)
     const seenCodes = new Set<string>();
     for (const sheet of sheets) {
       if (!sheet.code) continue;
@@ -340,14 +340,14 @@ app.post('/api/payrolls/sync', async (req, res) => {
             items: {
               create: validItems.map((i: any) => {
                 const { id, sheetId, advanceAmount, ...rest } = i;
-                // Đảm bảo advanceAmount không bị null/undefined (nguyên nhân gây mất dữ liệu ứng lương)
+                // Äáº£m báº£o advanceAmount khĂ´ng bá»‹ null/undefined (nguyĂªn nhĂ¢n gĂ¢y máº¥t dá»¯ liá»‡u á»©ng lÆ°Æ¡ng)
                 return { ...rest, advanceAmount: typeof advanceAmount === 'number' ? advanceAmount : 0 };
               })
             },
             payments: {
               create: validPayments.map((p: any) => {
                 const { id, sheetId, method, paymentMethod, ...rest } = p;
-                return { ...rest, paymentMethod: method || paymentMethod || "Tiền mặt" };
+                return { ...rest, paymentMethod: method || paymentMethod || "Tiá»n máº·t" };
               })
             }
           },
@@ -362,7 +362,7 @@ app.post('/api/payrolls/sync', async (req, res) => {
             payments: {
               create: validPayments.map((p: any) => {
                 const { id, sheetId, method, paymentMethod, ...rest } = p;
-                return { ...rest, paymentMethod: method || paymentMethod || "Tiền mặt" };
+                return { ...rest, paymentMethod: method || paymentMethod || "Tiá»n máº·t" };
               })
             }
           }
@@ -384,7 +384,7 @@ app.post('/api/payrolls/sync', async (req, res) => {
   }
 });
 
-// APIs cho Mảng bán hàng và tồn kho
+// APIs cho Máº£ng bĂ¡n hĂ ng vĂ  tá»“n kho
 app.use('/api/products', catalogRouter);
 app.use('/api/orders', orderRouter);
 app.use('/api/purchases', purchaseRouter);
@@ -393,10 +393,10 @@ app.use('/api/analytics', analyticsRouter);
 app.use('/api/salary-advances', salaryAdvanceRouter);
 app.use('/api/backup', backupRouter);
 
-import karaboxRouter from './routes/karabox';
+import karaboxRouter from './routes/karabox.js';
 app.use('/api/karabox', karaboxRouter);
 
-import cashbookRouter from './routes/cashbook';
+import cashbookRouter from './routes/cashbook.js';
 app.use('/api/cashbook', cashbookRouter);
 
 app.get('/api/config', async (req, res) => {
@@ -443,12 +443,14 @@ app.use((req, res, next) => {
 });
 
 app.listen(PORT, () => {
-  console.log(`🚀 Server ready at: http://localhost:${PORT}`);
+  console.log(`đŸ€ Server ready at: http://localhost:${PORT}`);
   
-  // Khởi tạo bot telegram (chạy polling ngầm)
+  // Khá»Ÿi táº¡o bot telegram (cháº¡y polling ngáº§m)
   try {
     initTelegramBot();
   } catch (error) {
     console.error('Failed to init Telegram Bot:', error);
   }
 });
+
+
