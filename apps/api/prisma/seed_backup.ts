@@ -52,9 +52,14 @@ async function main() {
         for (const row of data) {
             if (!row.id) continue;
             try {
+                const createdAtDate = row.createdAt ? new Date(row.createdAt) : new Date();
+                const createdAtMsVal = row.createdAtMs ? BigInt(row.createdAtMs) : BigInt(createdAtDate.getTime());
+
                 await prisma.order.upsert({
                     where: { id: row.id },
-                    update: {},
+                    update: {
+                        createdAtMs: createdAtMsVal
+                    },
                     create: {
                         id: row.id,
                         code: row.code || `DH${Date.now()}`,
@@ -69,7 +74,8 @@ async function main() {
                         branch: row.branch || '379b Tôn Đức Thắng',
                         status: row.status || 'COMPLETED',
                         itemsCount: parseInt(row.itemsCount) || 1,
-                        createdAt: row.createdAt ? new Date(row.createdAt) : new Date(),
+                        createdAt: createdAtDate,
+                        createdAtMs: createdAtMsVal,
                         updatedAt: row.updatedAt ? new Date(row.updatedAt) : new Date()
                     }
                 });
@@ -122,7 +128,8 @@ async function main() {
                         durationMinutes: parseInt(row.durationMinutes) || 0,
                         totalAmount: parseFloat(row.totalAmount) || 0,
                         paymentMethod: row.paymentMethod || null,
-                        status: row.status || 'ACTIVE'
+                        status: row.status || 'ACTIVE',
+                        pricePerHour: 69000 // FIX MISSING REQUIRED ARGUMENT
                     }
                 });
             } catch (e) {
