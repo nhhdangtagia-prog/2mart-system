@@ -1,2 +1,0 @@
-﻿import { PrismaClient } from '@prisma/client'; const prisma = new PrismaClient(); async function main() { const records = await prisma.attendanceRecord.findMany(); console.log('Total records:', records.length); const byEmp = {}; records.forEach(r => { byEmp[r.employeeCode] = (byEmp[r.employeeCode] || 0) + 1; }); console.log('Records by employee:', byEmp); } main().catch(console.error).finally(() => prisma.\$disconnect());
-
