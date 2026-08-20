@@ -13,6 +13,9 @@
     "validate:architecture": "turbo run validate:architecture",
     "prepare": "husky install"
   },
+  "dependencies": {
+    "tsx": "^4.23.12"
+  },
   "devDependencies": {
     "husky": "^8.0.0",
     "turbo": "^2.0.0"
@@ -37,6 +40,7 @@
     ]
   }
 }
+
 
 
 
