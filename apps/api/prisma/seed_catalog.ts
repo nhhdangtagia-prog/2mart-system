@@ -5,7 +5,7 @@ import path from 'path';
 const prisma = new PrismaClient();
 
 async function main() {
-  const productsPath = path.resolve('E:/2 - Tá»”NG Há»¢P CĂC Dá»° ĂN AGENT/PHáº¦N Má»€M 2 MART CLAUDE/PHáº¦N Má»€M BĂN HĂ€NG 2 MART/apps/admin/src/data/raw_products.json');
+  const productsPath = path.resolve('../admin/src/data/raw_products.json');
   console.log('Reading products from', productsPath);
   
   const rawData = fs.readFileSync(productsPath, 'utf8');
