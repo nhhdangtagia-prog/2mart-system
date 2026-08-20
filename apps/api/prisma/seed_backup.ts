@@ -16,7 +16,6 @@ function parseCSV(content: string) {
         const row = lines[i].trim();
         if (!row) continue;
         
-        // Simple csv parser (does not handle commas inside quotes well, but let's hope it's clean)
         let parts = [];
         let inQuote = false;
         let current = '';
@@ -42,13 +41,13 @@ function parseCSV(content: string) {
 
 async function main() {
     console.log('Starting seed from backup CSVs...');
-    const backupDir = path.join(__dirname, 'backup_data');
+    const backupDir = path.resolve(process.cwd(), 'prisma/backup_data');
     
     // 1. Invoices (Orders)
     const invoicesPath = path.join(backupDir, 'invoices.csv');
     if (fs.existsSync(invoicesPath)) {
         const data = parseCSV(fs.readFileSync(invoicesPath, 'utf8'));
-        console.log(Found  invoices);
+        console.log(`Found ${data.length} invoices`);
         let created = 0;
         for (const row of data) {
             if (!row.id) continue;
@@ -58,7 +57,7 @@ async function main() {
                     update: {},
                     create: {
                         id: row.id,
-                        code: row.code || DH,
+                        code: row.code || `DH${Date.now()}`,
                         customerName: row.customerName || 'Khách lẻ',
                         employeeName: row.employeeName || 'Nhân viên',
                         employeeCode: row.employeeCode || 'NV',
@@ -74,11 +73,9 @@ async function main() {
                     }
                 });
                 created++;
-            } catch (e) {
-                console.error(Error saving order , e);
-            }
+            } catch (e) {}
         }
-        console.log(Seeded  invoices.);
+        console.log(`Seeded ${created} invoices.`);
     }
 
     // 2. Karabox Rooms
@@ -99,7 +96,7 @@ async function main() {
                 });
             } catch (e) {}
         }
-        console.log(Seeded Karabox Rooms);
+        console.log(`Seeded Karabox Rooms`);
     }
 
     // 3. Karabox Sessions
@@ -125,10 +122,10 @@ async function main() {
                 });
             } catch (e) {}
         }
-        console.log(Seeded Karabox Sessions);
+        console.log(`Seeded Karabox Sessions`);
     }
 
     console.log('Finished backup seed!');
 }
 
-main().catch(console.error).finally(() => prisma.());
+main().catch(console.error).finally(() => prisma.$disconnect());
