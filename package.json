@@ -4,6 +4,7 @@
   "private": true,
   "packageManager": "pnpm@9.1.0",
   "scripts": {
+    "start": "npx tsx apps/api/index.ts",
     "build": "turbo run build",
     "dev": "turbo run dev",
     "lint": "turbo run lint",
@@ -36,5 +37,6 @@
     ]
   }
 }
+
 
 
