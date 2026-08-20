@@ -1,0 +1,17 @@
+version: '3.8'
+services:
+  postgres:
+    image: postgres:15-alpine
+    container_name: 2mart-postgres
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: password
+      POSTGRES_DB: 2mart_db
+    ports:
+      - "5433:5432"
+    volumes:
+      - 2mart-postgres-data:/var/lib/postgresql/data
+    restart: unless-stopped
+
+volumes:
+  2mart-postgres-data:

@@ -1,0 +1,490 @@
+[
+  {
+    "code": "NCC000058",
+    "name": "betagen",
+    "phone": "02363663117",
+    "debt": "0.0",
+    "totalBought": "1404000",
+    "status": "1"
+  },
+  {
+    "code": "NCC000057",
+    "name": "tiệm bánh flan",
+    "phone": "0932660791",
+    "debt": "45000.0",
+    "totalBought": "45000",
+    "status": "1"
+  },
+  {
+    "code": "NCC000056",
+    "name": "Hùng Lê Phát",
+    "phone": "0933782575",
+    "debt": "0.0",
+    "totalBought": "2844000",
+    "status": "1"
+  },
+  {
+    "code": "NCC000055",
+    "name": "Hương Thiện Duyên",
+    "phone": "0905193443",
+    "debt": "0.0",
+    "totalBought": "2482000",
+    "status": "1"
+  },
+  {
+    "code": "NCC000054",
+    "name": "Hùng Nam HuNo",
+    "phone": "0905525063",
+    "debt": "0.0",
+    "totalBought": "1542000",
+    "status": "1"
+  },
+  {
+    "code": "NCC000053",
+    "name": "Thiện Hưng Thịnh",
+    "phone": "02363618141",
+    "debt": "0.0",
+    "totalBought": "759996",
+    "status": "1"
+  },
+  {
+    "code": "NCC000052",
+    "name": "Huyền vy",
+    "phone": "0969123079",
+    "debt": "0.0",
+    "totalBought": "910000",
+    "status": "1"
+  },
+  {
+    "code": "NCC000051",
+    "name": "An Minh Nguyên",
+    "phone": "0905022117",
+    "debt": "0.0",
+    "totalBought": "1321360",
+    "status": "1"
+  },
+  {
+    "code": "NCC000050",
+    "name": "Hoàng Đức Hải",
+    "phone": "0983042929",
+    "debt": "0.0",
+    "totalBought": "6405000",
+    "status": "1"
+  },
+  {
+    "code": "NCC000049",
+    "name": "Long Nhiên",
+    "phone": "0972535225",
+    "debt": "0.0",
+    "totalBought": "3025000",
+    "status": "1"
+  },
+  {
+    "code": "NCC000048",
+    "name": "Hoàng Ngọc Trâm",
+    "phone": "0982261519",
+    "debt": "1424952.0",
+    "totalBought": "1424952",
+    "status": "1"
+  },
+  {
+    "code": "NCC000047",
+    "name": "HOTDOG HCT FAMILY",
+    "phone": "0905915727",
+    "debt": "0.0",
+    "totalBought": "830000",
+    "status": "1"
+  },
+  {
+    "code": "NCC000046",
+    "name": "Công ty TNHH Hoàng Trần THT",
+    "phone": "0585856638",
+    "debt": "270.0",
+    "totalBought": "2609520",
+    "status": "1"
+  },
+  {
+    "code": "NCC000045",
+    "name": "bảo huy",
+    "phone": "0976455886",
+    "debt": "0.0",
+    "totalBought": "624000",
+    "status": "1"
+  },
+  {
+    "code": "NCC000044",
+    "name": "2mart",
+    "phone": "0702338368",
+    "debt": "0.0",
+    "totalBought": "90000",
+    "status": "1"
+  },
+  {
+    "code": "NCC000043",
+    "name": "cocacola",
+    "phone": "0765390610",
+    "debt": "0.0",
+    "totalBought": "1543944",
+    "status": "1"
+  },
+  {
+    "code": "NCC000042",
+    "name": "warior",
+    "phone": "076 9958119",
+    "debt": "0.0",
+    "totalBought": "390000",
+    "status": "1"
+  },
+  {
+    "code": "NCC000041",
+    "name": "bocari",
+    "phone": "0975345677",
+    "debt": "",
+    "totalBought": "0",
+    "status": "1"
+  },
+  {
+    "code": "NCC000040",
+    "name": "đức hải",
+    "phone": "0975246097",
+    "debt": "0.0",
+    "totalBought": "1437968",
+    "status": "1"
+  },
+  {
+    "code": "NCC000039",
+    "name": "lê trung",
+    "phone": "02363645945",
+    "debt": "0.0",
+    "totalBought": "2448000",
+    "status": "1"
+  },
+  {
+    "code": "NCC000038",
+    "name": "thịnh phát",
+    "phone": "0792628492",
+    "debt": "317040.0",
+    "totalBought": "1389980",
+    "status": "1"
+  },
+  {
+    "code": "NCC000037",
+    "name": "miss bánh tráng",
+    "phone": "0369541689",
+    "debt": "0.0",
+    "totalBought": "300000",
+    "status": "1"
+  },
+  {
+    "code": "NCC000036",
+    "name": "nhuận gia phát",
+    "phone": "0935 003 765",
+    "debt": "0.0",
+    "totalBought": "918000",
+    "status": "1"
+  },
+  {
+    "code": "NCC000035",
+    "name": "libra Bảo Nguyên",
+    "phone": "0787536623",
+    "debt": "0.0",
+    "totalBought": "1000000",
+    "status": "1"
+  },
+  {
+    "code": "NCC000034",
+    "name": "Hữu Đoàn",
+    "phone": "0976609591",
+    "debt": "0.0",
+    "totalBought": "2810986",
+    "status": "1"
+  },
+  {
+    "code": "NCC000033",
+    "name": "Lan duy linh",
+    "phone": "0905719084",
+    "debt": "268000.0",
+    "totalBought": "4076500",
+    "status": "1"
+  },
+  {
+    "code": "NCC000032",
+    "name": "lavie",
+    "phone": "0702363622",
+    "debt": "-301000.0",
+    "totalBought": "301000",
+    "status": "1"
+  },
+  {
+    "code": "NCC000031",
+    "name": "npp bia sao vàng anh tài",
+    "phone": "0905268893",
+    "debt": "505000.0",
+    "totalBought": "9204000",
+    "status": "1"
+  },
+  {
+    "code": "NCC000030",
+    "name": "ANNA PHƯỚC",
+    "phone": "0906546211",
+    "debt": "0.0",
+    "totalBought": "1730960",
+    "status": "1"
+  },
+  {
+    "code": "NCC000029",
+    "name": "ngọc thịnh",
+    "phone": "0935607708",
+    "debt": "0.0",
+    "totalBought": "26099771",
+    "status": "1"
+  },
+  {
+    "code": "NCC000028",
+    "name": "Tuấn Việt",
+    "phone": "97645",
+    "debt": "0.0",
+    "totalBought": "2178000",
+    "status": "1"
+  },
+  {
+    "code": "NCC000027",
+    "name": "nl",
+    "phone": "0337636157",
+    "debt": "0.0",
+    "totalBought": "96000",
+    "status": "1"
+  },
+  {
+    "code": "NCC000026",
+    "name": "hương bình",
+    "phone": "0906458268",
+    "debt": "0.0",
+    "totalBought": "2685694",
+    "status": "1"
+  },
+  {
+    "code": "NCC000025",
+    "name": "orion",
+    "phone": "0772522488",
+    "debt": "0.0",
+    "totalBought": "364000",
+    "status": "1"
+  },
+  {
+    "code": "NCC000024",
+    "name": "cty Tnhh mtv phước tài",
+    "phone": "0788655558",
+    "debt": "0.0",
+    "totalBought": "3633820",
+    "status": "1"
+  },
+  {
+    "code": "NCC000023",
+    "name": "Công Ty TNHH cơ hội và thách thức",
+    "phone": "0913845987",
+    "debt": "675218.0",
+    "totalBought": "10842126",
+    "status": "1"
+  },
+  {
+    "code": "NCC000022",
+    "name": "kotex",
+    "phone": "0935177107",
+    "debt": "0.0",
+    "totalBought": "2436000",
+    "status": "1"
+  },
+  {
+    "code": "NCC000021",
+    "name": "Omachi",
+    "phone": "3",
+    "debt": "0.0",
+    "totalBought": "5641386",
+    "status": "1"
+  },
+  {
+    "code": "NCC000020",
+    "name": "Huyền Food",
+    "phone": "0967771310",
+    "debt": "504000.0",
+    "totalBought": "3969000",
+    "status": "1"
+  },
+  {
+    "code": "NCC000019",
+    "name": "Trung Long",
+    "phone": "0905765917",
+    "debt": "0.0",
+    "totalBought": "3780033",
+    "status": "1"
+  },
+  {
+    "code": "NCC000018",
+    "name": "Kiên Gia Thịnh",
+    "phone": "0935060177",
+    "debt": "0.0",
+    "totalBought": "1560000",
+    "status": "1"
+  },
+  {
+    "code": "NCC000017",
+    "name": "Lays",
+    "phone": "0",
+    "debt": "0.0",
+    "totalBought": "3809583",
+    "status": "1"
+  },
+  {
+    "code": "NCC000016",
+    "name": "Lotte",
+    "phone": "1",
+    "debt": "0.0",
+    "totalBought": "2113000",
+    "status": "1"
+  },
+  {
+    "code": "NCC000015",
+    "name": "Trần Trương",
+    "phone": "02363887090/ Hằng (0343079256)",
+    "debt": "0.0",
+    "totalBought": "876659",
+    "status": "1"
+  },
+  {
+    "code": "NCC000014",
+    "name": "Đức Anh Bond",
+    "phone": "0988655502",
+    "debt": "-4.0",
+    "totalBought": "5792996",
+    "status": "1"
+  },
+  {
+    "code": "NCC000013",
+    "name": "cool air",
+    "phone": "none",
+    "debt": "0.0",
+    "totalBought": "2190000",
+    "status": "1"
+  },
+  {
+    "code": "NCC000012",
+    "name": "Duy Phat Thinh",
+    "phone": "0932492565",
+    "debt": "1014080.0",
+    "totalBought": "1014080",
+    "status": "1"
+  },
+  {
+    "code": "NCC000011",
+    "name": "Thành Luân HT",
+    "phone": "0762000002",
+    "debt": "0.0",
+    "totalBought": "1340000",
+    "status": "1"
+  },
+  {
+    "code": "NCC000010",
+    "name": "Doctor Care",
+    "phone": "02363639019",
+    "debt": "0.0",
+    "totalBought": "1216351",
+    "status": "1"
+  },
+  {
+    "code": "NCC000009",
+    "name": "công ty hưng tài",
+    "phone": "02363889824",
+    "debt": "10005.0",
+    "totalBought": "4241010",
+    "status": "1"
+  },
+  {
+    "code": "NCC000008",
+    "name": "TOSOL fulfillment",
+    "phone": "0788612698",
+    "debt": "0.0",
+    "totalBought": "1431000",
+    "status": "1"
+  },
+  {
+    "code": "NCC000007",
+    "name": "Vân Thủy",
+    "phone": "0903543977",
+    "debt": "5981299.0",
+    "totalBought": "5981299",
+    "status": "1"
+  },
+  {
+    "code": "NCC000006",
+    "name": "Trung Giang",
+    "phone": "0915010268",
+    "debt": "1364000.0",
+    "totalBought": "23482025",
+    "status": "1"
+  },
+  {
+    "code": "NCC000005",
+    "name": "sương",
+    "phone": "0905554254",
+    "debt": "0.0",
+    "totalBought": "5075800",
+    "status": "1"
+  },
+  {
+    "code": "NCC000004",
+    "name": "làng an",
+    "phone": "0905699232",
+    "debt": "0.0",
+    "totalBought": "3420000",
+    "status": "1"
+  },
+  {
+    "code": "HTC Family Food",
+    "name": "HTC Family Food",
+    "phone": "0336866935",
+    "debt": "-730000.0",
+    "totalBought": "1957500",
+    "status": "1"
+  },
+  {
+    "code": "NCC000003",
+    "name": "TÂN THANH PHÁT",
+    "phone": "0905904625",
+    "debt": "0.0",
+    "totalBought": "1244006",
+    "status": "1"
+  },
+  {
+    "code": "XNK DUY TÂN",
+    "name": "XNK DUY TÂN",
+    "phone": "0911669466",
+    "debt": "0.0",
+    "totalBought": "270000",
+    "status": "1"
+  },
+  {
+    "code": "NCC000002",
+    "name": "Kido's Bakery",
+    "phone": "0787627775",
+    "debt": "3453079.0",
+    "totalBought": "3453079",
+    "status": "1"
+  },
+  {
+    "code": "tnlg",
+    "name": "nhà phân phối tâm lành",
+    "phone": "0914014975",
+    "debt": "0.0",
+    "totalBought": "1295000",
+    "status": "1"
+  },
+  {
+    "code": "NCC000001",
+    "name": "abc",
+    "phone": "123",
+    "debt": "0.0",
+    "totalBought": "0",
+    "status": "1"
+  }
+]

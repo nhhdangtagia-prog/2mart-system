@@ -1,0 +1,6 @@
+securitySchemes:
+  bearerAuth:
+    type: http
+    scheme: bearer
+    bearerFormat: JWT
+    description: Cung cấp JWT token lấy từ quá trình đăng nhập.

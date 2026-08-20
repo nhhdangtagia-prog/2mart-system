@@ -1,0 +1,33 @@
+responses:
+  UnauthorizedError:
+    description: "Access token is missing or invalid"
+    content:
+      application/json:
+        schema:
+          type: object
+          properties:
+            success:
+              type: boolean
+              example: false
+            error:
+              $ref: '../schemas/ErrorDetail.yaml#/ErrorDetail'
+            data:
+              type: "null"
+            meta:
+              type: "null"
+  ValidationError:
+    description: "Invalid input data"
+    content:
+      application/json:
+        schema:
+          type: object
+          properties:
+            success:
+              type: boolean
+              example: false
+            error:
+              $ref: '../schemas/ErrorDetail.yaml#/ErrorDetail'
+            data:
+              type: "null"
+            meta:
+              type: "null"

@@ -1,0 +1,24 @@
+Order:
+  type: object
+  properties:
+    id:
+      type: string
+      format: uuid
+    order_code:
+      type: string
+      example: "HD0001"
+    branch_id:
+      type: string
+      format: uuid
+    total_amount:
+      type: number
+      format: float
+    status:
+      type: string
+      enum: [Draft, Completed, Cancelled]
+  required:
+    - id
+    - order_code
+    - branch_id
+    - total_amount
+    - status

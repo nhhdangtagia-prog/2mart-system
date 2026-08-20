@@ -1,0 +1,49 @@
+checkout:
+  post:
+    summary: Thực thi giao dịch POS Checkout
+    tags: [Business API]
+    parameters:
+      - $ref: '../parameters/common_parameters.yaml#/IdempotencyKey'
+      - $ref: '../parameters/common_parameters.yaml#/CorrelationId'
+    requestBody:
+      required: true
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              branch_id:
+                type: string
+                format: uuid
+              customer_id:
+                type: string
+                format: uuid
+              items:
+                type: array
+                items:
+                  type: object
+                  properties:
+                    product_id: { type: string, format: uuid }
+                    quantity: { type: integer }
+    responses:
+      '201':
+        description: Giao dịch thành công
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                success:
+                  type: boolean
+                  example: true
+                data:
+                  $ref: '../schemas/Order.yaml#/Order'
+      '400':
+        description: Lỗi Validate hoặc Lỗi Nghiệp Vụ (POS_*)
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                success: { type: boolean, example: false }
+                error: { $ref: '../schemas/ErrorDetail.yaml#/ErrorDetail' }

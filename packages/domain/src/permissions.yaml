@@ -1,0 +1,133 @@
+# Single Source of Truth cho toàn bộ Quyền hạn (Permissions) trong 2Mart ERP.
+# Từ file này, hệ thống sẽ tự động sinh:
+# 1. SQL Migration (INSERT INTO permissions)
+# 2. TypeScript Enum (Permission.ts)
+# 3. Documentation
+
+version: "1.0"
+modules:
+  auth:
+    description: "Quản lý Đăng nhập & Session"
+    permissions:
+      - id: "auth.login"
+        name: "Đăng nhập hệ thống"
+      - id: "auth.logout"
+        name: "Đăng xuất"
+        
+  organization:
+    description: "Quản lý Tổ chức & Chi nhánh"
+    permissions:
+      - id: "org.read"
+        name: "Xem thông tin tổ chức"
+      - id: "org.update"
+        name: "Cập nhật tổ chức"
+      - id: "branch.read"
+        name: "Xem danh sách chi nhánh"
+      - id: "branch.create"
+        name: "Tạo chi nhánh mới"
+      - id: "branch.update"
+        name: "Cập nhật chi nhánh"
+      - id: "branch.delete"
+        name: "Xóa chi nhánh"
+
+  user:
+    description: "Quản lý Người dùng & Phân quyền"
+    permissions:
+      - id: "user.read"
+        name: "Xem danh sách nhân viên"
+      - id: "user.create"
+        name: "Tạo nhân viên mới"
+      - id: "user.update"
+        name: "Cập nhật nhân viên"
+      - id: "role.read"
+        name: "Xem danh sách Role"
+      - id: "role.assign"
+        name: "Gán Role cho nhân viên"
+
+  product:
+    description: "Quản lý Sản phẩm (Catalog)"
+    permissions:
+      - id: "product.read"
+        name: "Xem danh sách sản phẩm"
+      - id: "product.create"
+        name: "Tạo sản phẩm"
+      - id: "product.update"
+        name: "Cập nhật sản phẩm"
+      - id: "product.delete"
+        name: "Xóa sản phẩm"
+      - id: "product.price.update"
+        name: "Cập nhật giá sản phẩm"
+
+  category:
+    description: "Quản lý Danh mục hàng hóa"
+    permissions:
+      - id: "category.read"
+        name: "Xem danh mục"
+      - id: "category.create"
+        name: "Tạo danh mục"
+      - id: "category.update"
+        name: "Cập nhật danh mục"
+      - id: "category.delete"
+        name: "Xóa danh mục"
+
+  brand:
+    description: "Quản lý Thương hiệu"
+    permissions:
+      - id: "brand.read"
+        name: "Xem thương hiệu"
+      - id: "brand.create"
+        name: "Tạo thương hiệu"
+      - id: "brand.update"
+        name: "Cập nhật thương hiệu"
+      - id: "brand.delete"
+        name: "Xóa thương hiệu"
+
+  unit:
+    description: "Quản lý Đơn vị tính"
+    permissions:
+      - id: "unit.read"
+        name: "Xem đơn vị tính"
+      - id: "unit.create"
+        name: "Tạo đơn vị tính"
+      - id: "unit.update"
+        name: "Cập nhật đơn vị tính"
+      - id: "unit.delete"
+        name: "Xóa đơn vị tính"
+
+  price_list:
+    description: "Quản lý Bảng giá"
+    permissions:
+      - id: "price_list.read"
+        name: "Xem bảng giá"
+      - id: "price_list.create"
+        name: "Tạo bảng giá"
+      - id: "price_list.update"
+        name: "Cập nhật bảng giá"
+      - id: "price_list.delete"
+        name: "Xóa bảng giá"
+
+  inventory:
+    description: "Quản lý Kho hàng"
+    permissions:
+      - id: "inventory.read"
+        name: "Xem tồn kho"
+      - id: "inventory.adjust"
+        name: "Điều chỉnh tồn kho"
+      - id: "inventory.count"
+        name: "Kiểm kho"
+
+  pos:
+    description: "Bán hàng tại quầy"
+    permissions:
+      - id: "pos.access"
+        name: "Truy cập màn hình thu ngân"
+      - id: "order.create"
+        name: "Tạo đơn hàng"
+      - id: "order.discount"
+        name: "Áp dụng giảm giá"
+
+  audit:
+    description: "Lịch sử hệ thống"
+    permissions:
+      - id: "audit.read"
+        name: "Xem nhật ký hệ thống"

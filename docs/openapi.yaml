@@ -1,0 +1,322 @@
+openapi: 3.1.0
+info:
+  title: 2Mart ERP API
+  version: 0.1.0
+  description: API Specs cho Hệ thống 2Mart ERP Mini
+servers:
+  - url: http://localhost:3000/api/v1
+    description: Local server
+tags:
+  - name: System
+    description: System level endpoints
+  - name: Auth
+    description: Authentication endpoints
+
+  - name: Catalog
+    description: Quản lý hàng hóa, danh mục, thương hiệu, giá bán
+
+paths:
+  /health:
+    get:
+      tags:
+        - System
+      operationId: getHealth
+      summary: System Health Check
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HealthResponse'
+
+  /categories:
+    get:
+      tags:
+        - Catalog
+      operationId: getCategories
+      summary: Lấy cây danh mục
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Category'
+  
+  /products:
+    get:
+      tags:
+        - Catalog
+      operationId: searchProducts
+      summary: Tìm kiếm sản phẩm
+      parameters:
+        - name: query
+          in: query
+          schema:
+            type: string
+        - name: categoryId
+          in: query
+          schema:
+            type: string
+            format: uuid
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/ProductLookupDTO'
+
+    post:
+      tags:
+        - Catalog
+      operationId: createProduct
+      summary: Tạo sản phẩm mới
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CreateProductDTO'
+      responses:
+        '201':
+          description: Created
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProductLookupDTO'
+
+  /auth/login:
+    post:
+      tags:
+        - Auth
+      operationId: login
+      summary: Đăng nhập hệ thống
+      description: Nhận HttpOnly Cookie (Access/Refresh Token) cho Web App
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/LoginRequest'
+      responses:
+        '200':
+          description: Đăng nhập thành công
+          headers:
+            Set-Cookie:
+              schema:
+                type: string
+              description: HttpOnly Cookies cho Access Token & Refresh Token
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/LoginResponse'
+        '401':
+          description: Sai tài khoản / Mật khẩu
+
+  /auth/refresh:
+    post:
+      tags:
+        - Auth
+      operationId: refreshToken
+      summary: Refresh Access Token
+      description: Yêu cầu gửi kèm HttpOnly Refresh Token Cookie
+      responses:
+        '200':
+          description: Refresh thành công
+          headers:
+            Set-Cookie:
+              schema:
+                type: string
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/LoginResponse'
+        '401':
+          description: Refresh Token hết hạn hoặc không hợp lệ
+
+  /auth/logout:
+    post:
+      tags:
+        - Auth
+      operationId: logout
+      summary: Đăng xuất khỏi thiết bị hiện tại
+      responses:
+        '200':
+          description: Đăng xuất thành công, clear Cookies
+          headers:
+            Set-Cookie:
+              schema:
+                type: string
+
+  /auth/me:
+    get:
+      tags:
+        - Auth
+      operationId: getCurrentUser
+      summary: Lấy thông tin user hiện tại
+      parameters:
+        - name: X-Branch-Id
+          in: header
+          required: false
+          schema:
+            type: string
+            format: uuid
+          description: Branch Context ID (nếu không có sẽ ưu tiên lấy Cookie hoặc Default)
+      responses:
+        '200':
+          description: Trả về thông tin user và permissions theo branch context
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/UserResponse'
+        '401':
+          description: Unauthorized
+
+components:
+  schemas:
+    Category:
+      type: object
+      properties:
+        id:
+          type: string
+          format: uuid
+        parentId:
+          type: string
+          format: uuid
+          nullable: true
+        code:
+          type: string
+        name:
+          type: string
+        children:
+          type: array
+          items:
+            $ref: '#/components/schemas/Category'
+            
+    ProductLookupDTO:
+      type: object
+      properties:
+        id:
+          type: string
+          format: uuid
+        sku:
+          type: string
+        name:
+          type: string
+        brandName:
+          type: string
+        categoryName:
+          type: string
+        retailPrice:
+          type: number
+        status:
+          type: string
+          enum: [ACTIVE, INACTIVE, DISCONTINUED, COMING_SOON]
+        imageUrl:
+          type: string
+          nullable: true
+          
+    CreateProductDTO:
+      type: object
+      required:
+        - sku
+        - name
+        - defaultUnitId
+      properties:
+        sku:
+          type: string
+        name:
+          type: string
+        categoryId:
+          type: string
+          format: uuid
+        brandId:
+          type: string
+          format: uuid
+        defaultUnitId:
+          type: string
+          format: uuid
+        barcodes:
+          type: array
+          items:
+            type: string
+        retailPrice:
+          type: number
+    HealthResponse:
+      type: object
+      required:
+        - status
+        - version
+        - database
+        - openapi
+      properties:
+        status:
+          type: string
+        version:
+          type: string
+        gitCommit:
+          type: string
+        buildTime:
+          type: string
+        database:
+          type: string
+        openapi:
+          type: string
+
+    LoginRequest:
+      type: object
+      required:
+        - username
+        - password
+      properties:
+        username:
+          type: string
+          description: Tên đăng nhập hoặc SĐT
+        password:
+          type: string
+        deviceId:
+          type: string
+          description: Định danh thiết bị để quản lý Session đa nền tảng
+
+    LoginResponse:
+      type: object
+      required:
+        - user
+        - sessionId
+      properties:
+        user:
+          $ref: '#/components/schemas/UserResponse'
+        sessionId:
+          type: string
+
+    UserResponse:
+      type: object
+      required:
+        - id
+        - username
+        - fullName
+        - activeBranchId
+        - permissions
+      properties:
+        id:
+          type: string
+          format: uuid
+        username:
+          type: string
+        fullName:
+          type: string
+        activeBranchId:
+          type: string
+          format: uuid
+          description: ID của Chi nhánh đang làm việc hiện tại
+        permissions:
+          type: array
+          items:
+            type: string
+          description: Danh sách Permission string cho chi nhánh hiện tại

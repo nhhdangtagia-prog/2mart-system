@@ -1,0 +1,38 @@
+{
+  "name": "2mart-erp",
+  "version": "0.1.0",
+  "private": true,
+  "packageManager": "pnpm@11.17.0",
+  "scripts": {
+    "build": "turbo run build",
+    "dev": "turbo run dev",
+    "lint": "turbo run lint",
+    "test": "turbo run test",
+    "typecheck": "turbo run typecheck",
+    "validate:architecture": "turbo run validate:architecture",
+    "prepare": "husky install"
+  },
+  "devDependencies": {
+    "husky": "^8.0.0",
+    "turbo": "^2.0.0"
+  },
+  "engines": {
+    "node": ">=18",
+    "pnpm": ">=8"
+  },
+  "overrides": {
+    "react": "^19.2.7",
+    "react-dom": "^19.2.7"
+  },
+  "resolutions": {
+    "react": "^19.2.7",
+    "react-dom": "^19.2.7"
+  },
+  "pnpm": {
+    "onlyBuiltDependencies": [
+      "@prisma/client",
+      "@prisma/engines",
+      "prisma"
+    ]
+  }
+}

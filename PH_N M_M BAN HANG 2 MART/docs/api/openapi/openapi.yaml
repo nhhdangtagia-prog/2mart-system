@@ -1,0 +1,48 @@
+openapi: 3.1.0
+info:
+  title: 2Mart ERP Mini API
+  version: "1.0.0"
+  description: |
+    API Specification cho hệ thống 2Mart.
+    Tài liệu này đóng vai trò Single Source of Truth (SSOT).
+    
+    Phân loại API:
+    - **Master Data**: Các API CRUD quản lý danh mục (Products, Customers).
+    - **Business**: Các API thực thi nghiệp vụ (Checkout, Inventory Adjust).
+    - **Integration**: Các API giao tiếp hệ thống ngoài (KiotViet Import).
+servers:
+  - url: https://api.2mart.vn/api/v1
+    description: Production Server
+  - url: https://staging.api.2mart.vn/api/v1
+    description: Staging Server
+  - url: http://localhost:3000/api/v1
+    description: Local Development
+
+security:
+  - bearerAuth: []
+
+paths:
+  # Master Data
+  /products:
+    $ref: './paths/products.yaml#/products'
+  /products/{productId}:
+    $ref: './paths/products.yaml#/product_detail'
+    
+  # Business API
+  /pos/checkout:
+    $ref: './paths/checkout.yaml#/checkout'
+
+components:
+  securitySchemes:
+    $ref: './security/security_schemes.yaml#/securitySchemes'
+  responses:
+    $ref: './responses/common_responses.yaml#/responses'
+  parameters:
+    $ref: './parameters/common_parameters.yaml#/parameters'
+  schemas:
+    Product:
+      $ref: './schemas/Product.yaml#/Product'
+    Order:
+      $ref: './schemas/Order.yaml#/Order'
+    ErrorDetail:
+      $ref: './schemas/ErrorDetail.yaml#/ErrorDetail'

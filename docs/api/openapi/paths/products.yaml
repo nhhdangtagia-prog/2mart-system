@@ -1,0 +1,49 @@
+products:
+  get:
+    summary: Lấy danh sách hàng hóa
+    tags: [Master Data]
+    parameters:
+      - $ref: '../parameters/common_parameters.yaml#/PaginationLimit'
+      - $ref: '../parameters/common_parameters.yaml#/PaginationOffset'
+    responses:
+      '200':
+        description: OK
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                success:
+                  type: boolean
+                  example: true
+                data:
+                  type: array
+                  items:
+                    $ref: '../schemas/Product.yaml#/Product'
+      '401':
+        $ref: '../responses/common_responses.yaml#/UnauthorizedError'
+
+product_detail:
+  get:
+    summary: Xem chi tiết hàng hóa
+    tags: [Master Data]
+    parameters:
+      - name: productId
+        in: path
+        required: true
+        schema:
+          type: string
+          format: uuid
+    responses:
+      '200':
+        description: OK
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                success:
+                  type: boolean
+                  example: true
+                data:
+                  $ref: '../schemas/Product.yaml#/Product'

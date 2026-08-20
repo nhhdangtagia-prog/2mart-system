@@ -1,0 +1,11 @@
+node_modules/
+.env
+*.zip
+*.sql
+.DS_Store
+_archive/
+Backup/
+_SAO_LUU_KHONG_DUOC_XOA/
+temp_zip_extract/
+dist/
+build/

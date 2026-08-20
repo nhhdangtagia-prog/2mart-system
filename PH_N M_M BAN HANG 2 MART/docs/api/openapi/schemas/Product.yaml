@@ -1,0 +1,23 @@
+Product:
+  type: object
+  properties:
+    id:
+      type: string
+      format: uuid
+    product_code:
+      type: string
+      example: "HH0001"
+    barcode:
+      type: string
+    name:
+      type: string
+    retail_price:
+      type: number
+      format: float
+    is_active:
+      type: boolean
+  required:
+    - id
+    - product_code
+    - name
+    - retail_price

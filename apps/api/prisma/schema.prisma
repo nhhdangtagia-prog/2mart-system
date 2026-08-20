@@ -1,0 +1,331 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model Employee {
+  id                String   @id @default(uuid())
+  code              String   @unique
+  name              String
+  username          String   @unique
+  passwordHash      String?
+  role              String
+  accessLevel       String   @default("staff")
+  department        String
+  branch            String
+  status            String
+  email             String?
+  phone             String?
+  joinDate          String?
+  bankName          String?
+  bankAccountNumber String?
+  bankAccountHolder String?
+  salaryPolicy      String   @default("Mức 1")
+  createdAt         DateTime @default(now())
+  updatedAt         DateTime @updatedAt
+}
+
+model AttendanceRecord {
+  id           String   @id // `${shiftId}-${dateKey}-${employeeCode}`
+  shiftId      String
+  date         Int
+  dateKey      String
+  employeeCode String
+  employeeName String
+  branch       String
+  status       String
+  checkIn      String?
+  checkOut     String?
+  lateMinutes  Int?
+  earlyMinutes Int?
+  otMinutes    Int?
+  leaveType    String?
+  note         String?
+  isApproved   Boolean  @default(false)
+  auditLogs    Json?
+  createdAt    DateTime @default(now())
+  updatedAt    DateTime @updatedAt
+}
+
+model ScheduleAssignment {
+  id           String   @id // `${shiftId}-${dateKey}-${employeeCode}`
+  shiftId      String
+  date         Int
+  dateKey      String
+  employeeCode String
+  employeeName String
+  employeeDept String
+  createdAt    DateTime @default(now())
+  updatedAt    DateTime @updatedAt
+}
+
+model PayrollSheet {
+  id             String             @id @default(uuid())
+  code           String             @unique
+  name           String
+  periodType     String
+  periodRange    String
+  branch         String
+  creator        String
+  approver       String?
+  status         String
+  totalEmployees Int
+  totalSalary    Float
+  totalPaid      Float
+  totalRemaining Float
+  note           String?
+  formulaVersion Int?
+  createdAt      DateTime           @default(now())
+  updatedAt      DateTime           @updatedAt
+  items          PayrollSheetItem[]
+  payments       PayrollPayment[]
+}
+
+model PayrollSheetItem {
+  id                  String       @id @default(uuid())
+  sheetId             String
+  sheet               PayrollSheet @relation(fields: [sheetId], references: [id], onDelete: Cascade)
+  employeeId          String
+  employeeCode        String
+  employeeName        String
+  basicSalary         Float
+  overtimeSalary      Float
+  nightShiftsCount    Int?
+  nightShiftAllowance Float?
+  allowances          Float
+  bonuses             Float
+  totalIncome         Float
+  deductions          Float
+  netSalary           Float
+  paidAmount          Float
+  totalHours          Float?
+  advanceAmount       Float?
+  note                String?
+  branchBreakdown     Json?
+}
+
+model PayrollPayment {
+  id            String       @id @default(uuid())
+  sheetId       String
+  sheet         PayrollSheet @relation(fields: [sheetId], references: [id], onDelete: Cascade)
+  timestamp     String
+  amount        Float
+  paymentMethod String
+  payer         String
+  note          String?
+}
+
+model Product {
+  id           String        @id @default(uuid())
+  sku          String        @unique
+  name         String
+  brandName    String?
+  unit         String?
+  categoryName String?
+  retailPrice  Float
+  costPrice    Float?
+  status       String        @default("ACTIVE")
+  imageUrl     String?
+  lastSoldAt   DateTime?
+  createdAt    DateTime      @default(now())
+  updatedAt    DateTime      @updatedAt
+  branchStocks BranchStock[]
+}
+
+model BranchStock {
+  id         String  @id @default(uuid())
+  productSku String
+  product    Product @relation(fields: [productSku], references: [sku], onDelete: Cascade)
+  branch     String
+  stock      Int     @default(0)
+
+  @@unique([productSku, branch])
+}
+
+model Order {
+  id             String      @id @default(uuid())
+  code           String      @unique
+  customerName   String
+  employeeName   String
+  employeeCode   String?
+  totalAmount    Float
+  paymentMethod  String
+  cashAmount     Float?
+  transferAmount Float?
+  cardAmount     Float?
+  branch         String?
+  status         String      @default("COMPLETED")
+  itemsCount     Int
+  items          OrderItem[]
+  createdAt      DateTime    @default(now())
+  createdAtMs    BigInt?
+  updatedAt      DateTime    @updatedAt
+}
+
+model OrderItem {
+  id       String @id @default(uuid())
+  orderId  String
+  order    Order  @relation(fields: [orderId], references: [id], onDelete: Cascade)
+  sku      String
+  name     String
+  quantity Int
+  price    Float
+}
+
+model PurchaseOrder {
+  id            String              @id @default(uuid())
+  code          String              @unique
+  timestamp     String
+  importDate    String
+  branch        String
+  supplierName  String
+  supplierCode  String
+  totalQuantity Int
+  grossAmount   Float?
+  itemsDiscountTotal Float?
+  totalAmount   Float
+  discount      Float
+  discountValue Float?
+  discountType  String?
+  vatAmount     Float?
+  paidAmount    Float?
+  netPayable    Float?
+  status        String
+  note          String?
+  expectedDate  String?
+  creator       String
+  creatorRole   String?
+  importer      String?
+  approvedBy    String?
+  approvedAt    String?
+  items         PurchaseOrderItem[]
+  logs          PurchaseOrderLog[]
+  createdAt     DateTime            @default(now())
+  updatedAt     DateTime            @updatedAt
+}
+
+model PurchaseOrderItem {
+  id              String        @id @default(uuid())
+  purchaseOrderId String
+  purchaseOrder   PurchaseOrder @relation(fields: [purchaseOrderId], references: [id], onDelete: Cascade)
+  sku             String
+  name            String
+  quantity        Int
+  costPrice       Float
+  discountValue   Float?
+  discountType    String?
+  discountAmount  Float?
+  amount          Float
+}
+
+model PurchaseOrderLog {
+  id              String        @id @default(uuid())
+  purchaseOrderId String
+  purchaseOrder   PurchaseOrder @relation(fields: [purchaseOrderId], references: [id], onDelete: Cascade)
+  timestamp       String
+  action          String
+  actor           String
+  detail          String
+}
+
+model TransferOrder {
+  id            String              @id @default(uuid())
+  code          String              @unique
+  timestamp     String
+  fromBranch    String
+  toBranch      String
+  totalQuantity Int
+  creator       String
+  note          String?
+  status        String
+  items         TransferOrderItem[]
+  createdAt     DateTime            @default(now())
+  updatedAt     DateTime            @updatedAt
+}
+
+model TransferOrderItem {
+  id              String        @id @default(uuid())
+  transferOrderId String
+  transferOrder   TransferOrder @relation(fields: [transferOrderId], references: [id], onDelete: Cascade)
+  sku             String
+  name            String
+  quantity        Int
+}
+
+model InventoryCheck {
+  id            String               @id @default(uuid())
+  code          String               @unique
+  timestamp     String
+  branch        String
+  creator       String
+  note          String?
+  status        String               @default("PENDING") // PENDING, COMPLETED, CANCELLED
+  approver      String?
+  approvedAt    String?
+  items         InventoryCheckItem[]
+  createdAt     DateTime             @default(now())
+  updatedAt     DateTime             @updatedAt
+}
+
+model InventoryCheckItem {
+  id               String         @id @default(uuid())
+  inventoryCheckId String
+  inventoryCheck   InventoryCheck @relation(fields: [inventoryCheckId], references: [id], onDelete: Cascade)
+  sku              String
+  name             String
+  systemStock      Int
+  actualStock      Int
+}
+
+model SystemConfig {
+  key       String   @id
+  value     String
+  updatedAt DateTime @updatedAt
+}
+
+model KaraboxRoom {
+  id             String           @id @default(uuid())
+  name           String           // e.g., "Box 1", "Box 2"
+  status         String           @default("AVAILABLE") // "AVAILABLE", "IN_USE", "MAINTENANCE"
+  currentSessionId String?        // Reference to the active session if IN_USE
+  createdAt      DateTime         @default(now())
+  updatedAt      DateTime         @updatedAt
+}
+
+model KaraboxSession {
+  id              String    @id @default(uuid())
+  roomId          String
+  startTime       DateTime
+  endTime         DateTime?
+  pricePerHour    Float
+  durationHours   Float?
+  roomTotal       Float?
+  surcharge       Float?    @default(0)
+  discount        Float?    @default(0)
+  totalAmount     Float?
+  paymentMethod   String?
+  startEmployee   String?
+  checkoutEmployee String?
+  notes           String?
+  status          String    @default("PLAYING") // "PLAYING", "COMPLETED", "CANCELLED"
+  shiftId         String?   // To easily query by shift if needed
+  createdAt       DateTime  @default(now())
+  updatedAt       DateTime  @updatedAt
+}
+
+model CashbookEntry {
+  id              String    @id @default(uuid())
+  type            String    // "receipt" | "payment"
+  amount          Float
+  description     String
+  category        String
+  paymentMethod   String    @default("Tiền mặt")
+  actorName       String    // Người tạo
+  timestampMs     BigInt
+  createdAt       DateTime  @default(now())
+  updatedAt       DateTime  @updatedAt
+}

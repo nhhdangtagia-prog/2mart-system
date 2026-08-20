@@ -1,0 +1,13 @@
+{
+  "name": "@2mart/database",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "migrate:up": "echo 'Chạy migration up (raw sql)...'",
+    "migrate:down": "echo 'Chạy migration down (raw sql)...'",
+    "seed": "echo 'Chạy seed data...'"
+  },
+  "dependencies": {
+    "postgres": "^3.4.4"
+  }
+}

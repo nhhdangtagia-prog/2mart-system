@@ -1,0 +1,35 @@
+@import "tailwindcss";
+
+:root {
+  --color-background: #f0f2f5;
+  --color-foreground: #334155;
+  --color-card: #ffffff;
+  --color-primary: #006bfe;
+  --color-primary-foreground: #ffffff;
+}
+
+body {
+  background-color: var(--color-background);
+  color: var(--color-foreground);
+  font-family: 'Inter', 'Outfit', sans-serif;
+}
+
+@media print {
+  body * {
+    visibility: hidden;
+  }
+  #print-section, #print-section * {
+    visibility: visible;
+  }
+  #print-section {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    margin: 0;
+    padding: 0;
+  }
+  @page {
+    margin: 0;
+  }
+}

@@ -1,0 +1,14 @@
+{
+  "name": "@2mart/domain",
+  "version": "0.1.0",
+  "private": true,
+  "main": "src/index.ts",
+  "types": "src/index.ts",
+  "dependencies": {
+    "@2mart/core": "workspace:*",
+    "@2mart/read-model": "workspace:*"
+  },
+  "devDependencies": {
+    "typescript": "^5.0.0"
+  }
+}

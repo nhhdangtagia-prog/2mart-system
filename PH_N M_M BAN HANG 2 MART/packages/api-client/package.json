@@ -1,0 +1,11 @@
+{
+  "name": "@2mart/api-client",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "generate": "orval --config ./orval.config.js"
+  },
+  "dependencies": {
+    "orval": "^6.31.0"
+  }
+}

@@ -1,0 +1,126 @@
+=== MIGRATION LOG ===
+[2026-07-24 12:45:22] Starting migration for E:\2 - T?NG H?P CÁC D? ÁN AGENT\PH?N M?M BÁN HÀNG 2 MART\SPRINT_01_FOUNDATION\00_PROJECT_CHARTER.md -> .\docs\foundation\00_PROJECT_CHARTER.md
+[2026-07-24 12:45:23] SUCCESS: Hash verified for .\docs\foundation\00_PROJECT_CHARTER.md
+[2026-07-24 12:45:23] Metadata already exists in .\docs\foundation\00_PROJECT_CHARTER.md
+[2026-07-24 12:45:23] Migration complete for .\docs\foundation\00_PROJECT_CHARTER.md
+[2026-07-24 12:45:23] Starting migration for E:\2 - T?NG H?P CÁC D? ÁN AGENT\PH?N M?M BÁN HÀNG 2 MART\SPRINT_01_FOUNDATION\01_PROJECT_SCOPE.md -> .\docs\foundation\01_PROJECT_SCOPE.md
+[2026-07-24 12:45:23] SUCCESS: Hash verified for .\docs\foundation\01_PROJECT_SCOPE.md
+[2026-07-24 12:45:23] Metadata already exists in .\docs\foundation\01_PROJECT_SCOPE.md
+[2026-07-24 12:45:23] Migration complete for .\docs\foundation\01_PROJECT_SCOPE.md
+[2026-07-24 12:45:23] Starting migration for E:\2 - T?NG H?P CÁC D? ÁN AGENT\PH?N M?M BÁN HÀNG 2 MART\SPRINT_01_FOUNDATION\02_BUSINESS_OVERVIEW.md -> .\docs\foundation\02_BUSINESS_OVERVIEW.md
+[2026-07-24 12:45:23] SUCCESS: Hash verified for .\docs\foundation\02_BUSINESS_OVERVIEW.md
+[2026-07-24 12:45:23] Metadata already exists in .\docs\foundation\02_BUSINESS_OVERVIEW.md
+[2026-07-24 12:45:23] Migration complete for .\docs\foundation\02_BUSINESS_OVERVIEW.md
+[2026-07-24 12:45:23] Starting migration for E:\2 - T?NG H?P CÁC D? ÁN AGENT\PH?N M?M BÁN HÀNG 2 MART\SPRINT_01_FOUNDATION\03_USER_ROLES_PERMISSION.md -> .\docs\foundation\03_USER_ROLES_PERMISSION.md
+[2026-07-24 12:45:23] SUCCESS: Hash verified for .\docs\foundation\03_USER_ROLES_PERMISSION.md
+[2026-07-24 12:45:23] Metadata already exists in .\docs\foundation\03_USER_ROLES_PERMISSION.md
+[2026-07-24 12:45:23] Migration complete for .\docs\foundation\03_USER_ROLES_PERMISSION.md
+[2026-07-24 12:45:23] Starting migration for E:\2 - T?NG H?P CÁC D? ÁN AGENT\PH?N M?M BÁN HÀNG 2 MART\SPRINT_01_FOUNDATION\04_BUSINESS_RULES.md -> .\docs\foundation\04_BUSINESS_RULES.md
+[2026-07-24 12:45:23] SUCCESS: Hash verified for .\docs\foundation\04_BUSINESS_RULES.md
+[2026-07-24 12:45:23] Metadata already exists in .\docs\foundation\04_BUSINESS_RULES.md
+[2026-07-24 12:45:23] Migration complete for .\docs\foundation\04_BUSINESS_RULES.md
+[2026-07-24 12:45:23] Starting migration for E:\2 - T?NG H?P CÁC D? ÁN AGENT\PH?N M?M BÁN HÀNG 2 MART\SPRINT_01_FOUNDATION\05_GLOSSARY.md -> .\docs\foundation\05_GLOSSARY.md
+[2026-07-24 12:45:23] SUCCESS: Hash verified for .\docs\foundation\05_GLOSSARY.md
+[2026-07-24 12:45:23] Metadata already exists in .\docs\foundation\05_GLOSSARY.md
+[2026-07-24 12:45:23] Migration complete for .\docs\foundation\05_GLOSSARY.md
+[2026-07-24 12:45:23] Starting migration for E:\2 - T?NG H?P CÁC D? ÁN AGENT\PH?N M?M BÁN HÀNG 2 MART\SPRINT_01_FOUNDATION\06_AI_WORKING_RULES.md -> .\docs\foundation\06_AI_WORKING_RULES.md
+[2026-07-24 12:45:23] SUCCESS: Hash verified for .\docs\foundation\06_AI_WORKING_RULES.md
+[2026-07-24 12:45:23] Metadata already exists in .\docs\foundation\06_AI_WORKING_RULES.md
+[2026-07-24 12:45:23] Migration complete for .\docs\foundation\06_AI_WORKING_RULES.md
+[2026-07-24 12:45:23] Starting migration for E:\2 - T?NG H?P CÁC D? ÁN AGENT\PH?N M?M BÁN HÀNG 2 MART\SPRINT_01_FOUNDATION\07_NAMING_CONVENTION.md -> .\docs\foundation\07_NAMING_CONVENTION.md
+[2026-07-24 12:45:24] SUCCESS: Hash verified for .\docs\foundation\07_NAMING_CONVENTION.md
+[2026-07-24 12:45:24] Metadata already exists in .\docs\foundation\07_NAMING_CONVENTION.md
+[2026-07-24 12:45:24] Migration complete for .\docs\foundation\07_NAMING_CONVENTION.md
+[2026-07-24 12:45:24] Starting migration for E:\2 - T?NG H?P CÁC D? ÁN AGENT\PH?N M?M BÁN HÀNG 2 MART\SPRINT_01_FOUNDATION\08_CHANGELOG.md -> .\docs\foundation\08_CHANGELOG.md
+[2026-07-24 12:45:24] SUCCESS: Hash verified for .\docs\foundation\08_CHANGELOG.md
+[2026-07-24 12:45:24] Metadata already exists in .\docs\foundation\08_CHANGELOG.md
+[2026-07-24 12:45:24] Migration complete for .\docs\foundation\08_CHANGELOG.md
+[2026-07-24 12:45:24] Starting migration for E:\2 - T?NG H?P CÁC D? ÁN AGENT\PH?N M?M BÁN HÀNG 2 MART\SPRINT_01_FOUNDATION\09_DECISION_LOG.md -> .\docs\foundation\09_DECISION_LOG.md
+[2026-07-24 12:45:24] SUCCESS: Hash verified for .\docs\foundation\09_DECISION_LOG.md
+[2026-07-24 12:45:24] Metadata already exists in .\docs\foundation\09_DECISION_LOG.md
+[2026-07-24 12:45:24] Migration complete for .\docs\foundation\09_DECISION_LOG.md
+[2026-07-24 12:45:24] Starting migration for .\SPRINT_02_BUSINESS_PROCESS\12_BPD_PAYROLL.md -> .\docs\business\payroll\BPD.md
+[2026-07-24 12:45:24] SUCCESS: Hash verified for .\docs\business\payroll\BPD.md
+[2026-07-24 12:45:24] Metadata already exists in .\docs\business\payroll\BPD.md
+[2026-07-24 12:45:24] Migration complete for .\docs\business\payroll\BPD.md
+[2026-07-24 12:45:24] Starting migration for .\SPRINT_02_BUSINESS_PROCESS\10_BPD_ATTENDANCE.md -> .\docs\business\attendance\BPD.md
+[2026-07-24 12:45:24] SUCCESS: Hash verified for .\docs\business\attendance\BPD.md
+[2026-07-24 12:45:24] Metadata already exists in .\docs\business\attendance\BPD.md
+[2026-07-24 12:45:24] Migration complete for .\docs\business\attendance\BPD.md
+[2026-07-24 12:45:24] Starting migration for .\SPRINT_02_BUSINESS_PROCESS\04_BPD_INVENTORY.md -> .\docs\business\inventory\BPD.md
+[2026-07-24 12:45:24] SUCCESS: Hash verified for .\docs\business\inventory\BPD.md
+[2026-07-24 12:45:24] Metadata already exists in .\docs\business\inventory\BPD.md
+[2026-07-24 12:45:24] Migration complete for .\docs\business\inventory\BPD.md
+[2026-07-24 12:45:24] Starting migration for .\SPRINT_02_BUSINESS_PROCESS\02_BPD_POS.md -> .\docs\business\pos\BPD.md
+[2026-07-24 12:45:24] SUCCESS: Hash verified for .\docs\business\pos\BPD.md
+[2026-07-24 12:45:24] Metadata already exists in .\docs\business\pos\BPD.md
+[2026-07-24 12:45:24] Migration complete for .\docs\business\pos\BPD.md
+[2026-07-24 12:45:24] Starting migration for .\SPRINT_02_BUSINESS_PROCESS\11_BPD_TIMESHEET.md -> .\docs\business\timesheet\BPD.md
+[2026-07-24 12:45:24] SUCCESS: Hash verified for .\docs\business\timesheet\BPD.md
+[2026-07-24 12:45:24] Metadata already exists in .\docs\business\timesheet\BPD.md
+[2026-07-24 12:45:24] Migration complete for .\docs\business\timesheet\BPD.md
+[2026-07-24 12:45:24] Starting migration for .\SPRINT_02_BUSINESS_PROCESS\15_BPD_TAX.md -> .\docs\business\tax\BPD.md
+[2026-07-24 12:45:24] SUCCESS: Hash verified for .\docs\business\tax\BPD.md
+[2026-07-24 12:45:24] Metadata already exists in .\docs\business\tax\BPD.md
+[2026-07-24 12:45:24] Migration complete for .\docs\business\tax\BPD.md
+[2026-07-24 12:45:24] Starting migration for .\SPRINT_02_BUSINESS_PROCESS\14_BPD_REPORTS.md -> .\docs\business\reports\BPD.md
+[2026-07-24 12:45:24] SUCCESS: Hash verified for .\docs\business\reports\BPD.md
+[2026-07-24 12:45:24] Metadata already exists in .\docs\business\reports\BPD.md
+[2026-07-24 12:45:24] Migration complete for .\docs\business\reports\BPD.md
+[2026-07-24 12:45:24] Starting migration for .\SPRINT_02_BUSINESS_PROCESS\06_BPD_CUSTOMERS.md -> .\docs\business\customers\BPD.md
+[2026-07-24 12:45:24] SUCCESS: Hash verified for .\docs\business\customers\BPD.md
+[2026-07-24 12:45:24] Metadata already exists in .\docs\business\customers\BPD.md
+[2026-07-24 12:45:24] Migration complete for .\docs\business\customers\BPD.md
+[2026-07-24 12:45:24] Starting migration for .\SPRINT_02_BUSINESS_PROCESS\05_BPD_PURCHASE.md -> .\docs\business\purchase\BPD.md
+[2026-07-24 12:45:24] SUCCESS: Hash verified for .\docs\business\purchase\BPD.md
+[2026-07-24 12:45:24] Metadata already exists in .\docs\business\purchase\BPD.md
+[2026-07-24 12:45:24] Migration complete for .\docs\business\purchase\BPD.md
+[2026-07-24 12:45:24] Starting migration for .\SPRINT_02_BUSINESS_PROCESS\13_BPD_CASHBOOK.md -> .\docs\business\cashbook\BPD.md
+[2026-07-24 12:45:24] SUCCESS: Hash verified for .\docs\business\cashbook\BPD.md
+[2026-07-24 12:45:24] Metadata already exists in .\docs\business\cashbook\BPD.md
+[2026-07-24 12:45:24] Migration complete for .\docs\business\cashbook\BPD.md
+[2026-07-24 12:45:24] Starting migration for .\SPRINT_02_BUSINESS_PROCESS\16_BPD_AUDIT_LOG.md -> .\docs\business\audit_log\BPD.md
+[2026-07-24 12:45:24] SUCCESS: Hash verified for .\docs\business\audit_log\BPD.md
+[2026-07-24 12:45:24] Metadata already exists in .\docs\business\audit_log\BPD.md
+[2026-07-24 12:45:24] Migration complete for .\docs\business\audit_log\BPD.md
+[2026-07-24 12:45:24] Starting migration for .\SPRINT_02_BUSINESS_PROCESS\08_BPD_EMPLOYEES.md -> .\docs\business\employees\BPD.md
+[2026-07-24 12:45:24] SUCCESS: Hash verified for .\docs\business\employees\BPD.md
+[2026-07-24 12:45:24] Metadata already exists in .\docs\business\employees\BPD.md
+[2026-07-24 12:45:24] Migration complete for .\docs\business\employees\BPD.md
+[2026-07-24 12:45:24] Starting migration for .\SPRINT_02_BUSINESS_PROCESS\17_BPD_NOTIFICATION.md -> .\docs\business\notification\BPD.md
+[2026-07-24 12:45:24] SUCCESS: Hash verified for .\docs\business\notification\BPD.md
+[2026-07-24 12:45:24] Metadata already exists in .\docs\business\notification\BPD.md
+[2026-07-24 12:45:24] Migration complete for .\docs\business\notification\BPD.md
+[2026-07-24 12:45:24] Starting migration for .\SPRINT_02_BUSINESS_PROCESS\07_BPD_SUPPLIERS.md -> .\docs\business\suppliers\BPD.md
+[2026-07-24 12:45:24] SUCCESS: Hash verified for .\docs\business\suppliers\BPD.md
+[2026-07-24 12:45:24] Metadata already exists in .\docs\business\suppliers\BPD.md
+[2026-07-24 12:45:24] Migration complete for .\docs\business\suppliers\BPD.md
+[2026-07-24 12:45:24] Starting migration for .\SPRINT_02_BUSINESS_PROCESS\18_BPD_SETTINGS.md -> .\docs\business\settings\BPD.md
+[2026-07-24 12:45:24] SUCCESS: Hash verified for .\docs\business\settings\BPD.md
+[2026-07-24 12:45:24] Metadata already exists in .\docs\business\settings\BPD.md
+[2026-07-24 12:45:24] Migration complete for .\docs\business\settings\BPD.md
+[2026-07-24 12:45:24] Starting migration for .\SPRINT_02_BUSINESS_PROCESS\01_BPD_DASHBOARD.md -> .\docs\business\dashboard\BPD.md
+[2026-07-24 12:45:24] SUCCESS: Hash verified for .\docs\business\dashboard\BPD.md
+[2026-07-24 12:45:24] Metadata already exists in .\docs\business\dashboard\BPD.md
+[2026-07-24 12:45:24] Migration complete for .\docs\business\dashboard\BPD.md
+[2026-07-24 12:45:24] Starting migration for .\SPRINT_02_BUSINESS_PROCESS\03_BPD_PRODUCTS.md -> .\docs\business\product\BPD.md
+[2026-07-24 12:45:24] SUCCESS: Hash verified for .\docs\business\product\BPD.md
+[2026-07-24 12:45:24] Metadata already exists in .\docs\business\product\BPD.md
+[2026-07-24 12:45:24] Migration complete for .\docs\business\product\BPD.md
+[2026-07-24 12:45:24] Starting migration for .\SPRINT_02_BUSINESS_PROCESS\09_BPD_SCHEDULE.md -> .\docs\business\schedule\BPD.md
+[2026-07-24 12:45:24] SUCCESS: Hash verified for .\docs\business\schedule\BPD.md
+[2026-07-24 12:45:24] Metadata already exists in .\docs\business\schedule\BPD.md
+[2026-07-24 12:45:24] Migration complete for .\docs\business\schedule\BPD.md
+[2026-07-24 12:45:24] Starting migration for .\SPRINT_03_PRD\07_PRD_SUPPLIERS.md -> .\docs\business\suppliers\PRD.md
+[2026-07-24 12:45:24] SUCCESS: Hash verified for .\docs\business\suppliers\PRD.md
+[2026-07-24 12:45:24] Metadata already exists in .\docs\business\suppliers\PRD.md
+[2026-07-24 12:45:24] Migration complete for .\docs\business\suppliers\PRD.md
+[2026-07-24 12:45:24] Starting migration for .\SPRINT_03_PRD\04_PRD_INVENTORY.md -> .\docs\business\inventory\PRD.md
+[2026-07-24 12:45:24] SUCCESS: Hash verified for .\docs\business\inventory\PRD.md
+[2026-07-24 12:45:24] Metadata already exists in .\docs\business\inventory\PRD.md
+[2026-07-24 12:45:24] Migration complete for .\docs\business\inventory\PRD.md
+[2026-07-24 12:45:24] Starting migration for .\SPRINT_03_PRD\03_PRD_PRODUCTS.md -> .\docs\business\product\PRD.md
+[2026-07-24 12:45:24] SUCCESS: Hash verified for .\docs\business\product\PRD.md
+[2026-07-24 12:45:24] Metadata already exists in .\docs\business\product\PRD.md
+[2026-07-24 12:45:24] Migration complete for .\docs\business\product\PRD.md
+[2026-07-24 12:45:24] Phase B Complete.

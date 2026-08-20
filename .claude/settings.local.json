@@ -1,0 +1,9 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(timeout 10 pnpm --filter admin dev)",
+      "Bash(pnpm install *)",
+      "Bash(echo \"exit: $?\")"
+    ]
+  }
+}
