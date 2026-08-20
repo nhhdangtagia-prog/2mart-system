@@ -68,12 +68,15 @@ async function main() {
                         cardAmount: parseFloat(row.cardAmount) || 0,
                         branch: row.branch || '379b Tôn Đức Thắng',
                         status: row.status || 'COMPLETED',
+                        itemsCount: parseInt(row.itemsCount) || 1,
                         createdAt: row.createdAt ? new Date(row.createdAt) : new Date(),
                         updatedAt: row.updatedAt ? new Date(row.updatedAt) : new Date()
                     }
                 });
                 created++;
-            } catch (e) {}
+            } catch (e) {
+                console.error(`Error saving order ${row.id}:`, e);
+            }
         }
         console.log(`Seeded ${created} invoices.`);
     }
@@ -94,7 +97,9 @@ async function main() {
                         status: row.status || 'AVAILABLE'
                     }
                 });
-            } catch (e) {}
+            } catch (e) {
+                console.error(`Error saving room ${row.id}:`, e);
+            }
         }
         console.log(`Seeded Karabox Rooms`);
     }
@@ -120,7 +125,9 @@ async function main() {
                         status: row.status || 'ACTIVE'
                     }
                 });
-            } catch (e) {}
+            } catch (e) {
+                console.error(`Error saving session ${row.id}:`, e);
+            }
         }
         console.log(`Seeded Karabox Sessions`);
     }
