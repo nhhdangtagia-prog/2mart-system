@@ -1,4 +1,6 @@
-import TelegramBot from 'node-telegram-bot-api';
+﻿import { createRequire } from 'module';
+const require = createRequire(import.meta.url);
+const TelegramBot = require('node-telegram-bot-api');
 import { PrismaClient } from '@prisma/client';
 import dotenv from 'dotenv';
 
@@ -34,12 +36,12 @@ export function initTelegramBot() {
         });
 
         if (!order) {
-          bot!.answerCallbackQuery(query.id, { text: 'Không tìm thấy phiếu nhập này!', show_alert: true }).catch(e => console.warn("[Telegram] Answer callback error:", e.message));
+          bot!.answerCallbackQuery(query.id, { text: 'KhĂ´ng tĂ¬m tháº¥y phiáº¿u nháº­p nĂ y!', show_alert: true }).catch(e => console.warn("[Telegram] Answer callback error:", e.message));
           return;
         }
 
         if (order.status === 'completed' || order.status === 'COMPLETED') {
-          bot!.answerCallbackQuery(query.id, { text: 'Phiếu nhập này đã được duyệt trước đó!', show_alert: true }).catch(e => console.warn("[Telegram] Answer callback error:", e.message));
+          bot!.answerCallbackQuery(query.id, { text: 'Phiáº¿u nháº­p nĂ y Ä‘Ă£ Ä‘Æ°á»£c duyá»‡t trÆ°á»›c Ä‘Ă³!', show_alert: true }).catch(e => console.warn("[Telegram] Answer callback error:", e.message));
           
           // Remove the button from the message
           bot!.editMessageReplyMarkup({ inline_keyboard: [] }, {
@@ -60,9 +62,9 @@ export function initTelegramBot() {
             logs: {
               create: {
                 timestamp: nowStr,
-                action: "DUYỆT PHIẾU NHẬP (TELEGRAM)",
+                action: "DUYá»†T PHIáº¾U NHáº¬P (TELEGRAM)",
                 actor: query.from.username || query.from.first_name || 'Telegram Admin',
-                detail: `Đã duyệt phiếu qua Telegram. Mã phiếu: ${order.code}. Hệ thống đang cập nhật tồn kho.`
+                detail: `ÄĂ£ duyá»‡t phiáº¿u qua Telegram. MĂ£ phiáº¿u: ${order.code}. Há»‡ thá»‘ng Ä‘ang cáº­p nháº­t tá»“n kho.`
               }
             }
           }
@@ -89,11 +91,11 @@ export function initTelegramBot() {
           });
         }
 
-        bot!.answerCallbackQuery(query.id, { text: `Đã duyệt phiếu ${order.code} thành công!`, show_alert: true }).catch(e => console.warn("[Telegram] Answer callback error:", e.message));
+        bot!.answerCallbackQuery(query.id, { text: `ÄĂ£ duyá»‡t phiáº¿u ${order.code} thĂ nh cĂ´ng!`, show_alert: true }).catch(e => console.warn("[Telegram] Answer callback error:", e.message));
         
         // Update the original message to indicate approval and remove the button
         const oldText = query.message.text || '';
-        const newText = `✅ *ĐÃ DUYỆT (bởi ${query.from.username || query.from.first_name})*\n\n` + oldText;
+        const newText = `âœ… *ÄĂƒ DUYá»†T (bá»Ÿi ${query.from.username || query.from.first_name})*\n\n` + oldText;
         
         await bot!.editMessageText(newText, {
           chat_id: query.message.chat.id,
@@ -105,7 +107,7 @@ export function initTelegramBot() {
 
       } catch (error) {
         console.error('Error processing callback query:', error);
-        bot!.answerCallbackQuery(query.id, { text: 'Có lỗi xảy ra khi duyệt phiếu!', show_alert: true }).catch(e => console.warn("[Telegram] Answer callback error:", e.message));
+        bot!.answerCallbackQuery(query.id, { text: 'CĂ³ lá»—i xáº£y ra khi duyá»‡t phiáº¿u!', show_alert: true }).catch(e => console.warn("[Telegram] Answer callback error:", e.message));
       }
     }
 
@@ -116,9 +118,9 @@ export function initTelegramBot() {
         // Notify the frontend via a webhook-style mechanism
         // The frontend polls localStorage directly, so we store approval in a known key
         // that the frontend can check
-        bot!.answerCallbackQuery(query.id, { text: `✅ Đã duyệt phiếu ứng lương!`, show_alert: true }).catch(e => console.warn("[Telegram] Answer callback error:", e.message));
+        bot!.answerCallbackQuery(query.id, { text: `âœ… ÄĂ£ duyá»‡t phiáº¿u á»©ng lÆ°Æ¡ng!`, show_alert: true }).catch(e => console.warn("[Telegram] Answer callback error:", e.message));
         const oldText = query.message?.text || '';
-        const newText = `✅ *ĐÃ DUYỆT bởi ${approverName}*\n\n` + oldText;
+        const newText = `âœ… *ÄĂƒ DUYá»†T bá»Ÿi ${approverName}*\n\n` + oldText;
         await bot!.editMessageText(newText, {
           chat_id: query.message!.chat.id,
           message_id: query.message!.message_id,
@@ -129,16 +131,16 @@ export function initTelegramBot() {
         console.log(`[Telegram] Approved salary advance ${advanceId} by ${approverName}`);
       } catch (error) {
         console.error('Error approving advance:', error);
-        bot!.answerCallbackQuery(query.id, { text: 'Có lỗi xảy ra!', show_alert: true }).catch(e => console.warn("[Telegram] Answer callback error:", e.message));
+        bot!.answerCallbackQuery(query.id, { text: 'CĂ³ lá»—i xáº£y ra!', show_alert: true }).catch(e => console.warn("[Telegram] Answer callback error:", e.message));
       }
     }
 
     if (query.data.startsWith('reject_advance_')) {
       const advanceId = query.data.replace('reject_advance_', '');
       try {
-        bot!.answerCallbackQuery(query.id, { text: `❌ Đã từ chối phiếu ứng lương`, show_alert: true }).catch(e => console.warn("[Telegram] Answer callback error:", e.message));
+        bot!.answerCallbackQuery(query.id, { text: `âŒ ÄĂ£ tá»« chá»‘i phiáº¿u á»©ng lÆ°Æ¡ng`, show_alert: true }).catch(e => console.warn("[Telegram] Answer callback error:", e.message));
         const oldText = query.message?.text || '';
-        const newText = `❌ *ĐÃ TỪ CHỐI bởi ${query.from.username || query.from.first_name}*\n\n` + oldText;
+        const newText = `âŒ *ÄĂƒ Tá»ª CHá»I bá»Ÿi ${query.from.username || query.from.first_name}*\n\n` + oldText;
         await bot!.editMessageText(newText, {
           chat_id: query.message!.chat.id,
           message_id: query.message!.message_id,
@@ -148,7 +150,7 @@ export function initTelegramBot() {
         console.log(`[Telegram] Rejected salary advance ${advanceId}`);
       } catch (error) {
         console.error('Error rejecting advance:', error);
-        bot!.answerCallbackQuery(query.id, { text: 'Có lỗi xảy ra!', show_alert: true }).catch(e => console.warn("[Telegram] Answer callback error:", e.message));
+        bot!.answerCallbackQuery(query.id, { text: 'CĂ³ lá»—i xáº£y ra!', show_alert: true }).catch(e => console.warn("[Telegram] Answer callback error:", e.message));
       }
     }
   });
@@ -162,17 +164,17 @@ export async function sendPurchaseImportNotification(order: any) {
     
     let itemsStr = '';
     if (order.items && order.items.length > 0) {
-      itemsStr = order.items.map((i: any) => `- ${i.name} (SL: ${i.quantity}, Giá: ${formatter.format(i.costPrice)})`).join('\n');
+      itemsStr = order.items.map((i: any) => `- ${i.name} (SL: ${i.quantity}, GiĂ¡: ${formatter.format(i.costPrice)})`).join('\n');
     }
 
-    const message = `📦 *PHIẾU NHẬP HÀNG MỚI (CHỜ DUYỆT)* 📦\n\n` +
-      `🏢 Cơ sở: ${order.branch}\n` +
-      `🔖 Mã Phiếu: ${order.code}\n` +
-      `🏭 NCC: ${order.supplierName}\n` +
-      `👤 Tạo bởi: ${order.creator}\n` +
-      ((order.vatAmount || 0) > 0 ? `⚖️ Thuế VAT: ${formatter.format(order.vatAmount)}\n` : '') +
-      `💰 Tổng thanh toán: *${formatter.format(order.netPayable || order.totalAmount)}*\n\n` +
-      `📦 *Chi tiết mặt hàng:*\n${itemsStr}`;
+    const message = `đŸ“¦ *PHIáº¾U NHáº¬P HĂ€NG Má»I (CHá»œ DUYá»†T)* đŸ“¦\n\n` +
+      `đŸ¢ CÆ¡ sá»Ÿ: ${order.branch}\n` +
+      `đŸ”– MĂ£ Phiáº¿u: ${order.code}\n` +
+      `đŸ­ NCC: ${order.supplierName}\n` +
+      `đŸ‘¤ Táº¡o bá»Ÿi: ${order.creator}\n` +
+      ((order.vatAmount || 0) > 0 ? `â–ï¸ Thuáº¿ VAT: ${formatter.format(order.vatAmount)}\n` : '') +
+      `đŸ’° Tá»•ng thanh toĂ¡n: *${formatter.format(order.netPayable || order.totalAmount)}*\n\n` +
+      `đŸ“¦ *Chi tiáº¿t máº·t hĂ ng:*\n${itemsStr}`;
 
     await bot.sendMessage(chatId, message, {
       parse_mode: 'Markdown',
@@ -180,7 +182,7 @@ export async function sendPurchaseImportNotification(order: any) {
         inline_keyboard: [
           [
             {
-              text: '✅ Duyệt phiếu nhập này',
+              text: 'âœ… Duyá»‡t phiáº¿u nháº­p nĂ y',
               callback_data: `approve_purchase_${order.id}`
             }
           ]
@@ -202,24 +204,24 @@ export async function sendSalaryAdvanceNotification(advance: any) {
     const formatter = new Intl.NumberFormat('vi-VN');
     const now = new Date().toLocaleString('vi-VN');
     const message =
-      `💸 *ĐỀ XUẤT ỨNG LƯƠNG (CHỜ DUYỆT)* 💸\n\n` +
-      `👤 Nhân viên: *${advance.employeeName}*\n` +
-      `📍 Chi nhánh: ${advance.branch}\n` +
-      `📅 Tháng: ${advance.month}/${advance.year}\n` +
-      `🕐 Thời gian gửi: ${now}\n\n` +
-      `💰 Lương đã có: ${formatter.format(advance.earnedSalary)} đ\n` +
-      `🔖 Mức ứng tối đa (50%): ${formatter.format(advance.maxAllowed)} đ\n` +
-      `💵 *Số tiền muốn ứng: ${formatter.format(advance.amount)} đ*\n` +
-      (advance.note ? `📝 Ghi chú: ${advance.note}\n` : '') +
-      `\nID phiếu: \`${advance.id}\``;
+      `đŸ’¸ *Äá»€ XUáº¤T á»¨NG LÆ¯Æ NG (CHá»œ DUYá»†T)* đŸ’¸\n\n` +
+      `đŸ‘¤ NhĂ¢n viĂªn: *${advance.employeeName}*\n` +
+      `đŸ“ Chi nhĂ¡nh: ${advance.branch}\n` +
+      `đŸ“… ThĂ¡ng: ${advance.month}/${advance.year}\n` +
+      `đŸ• Thá»i gian gá»­i: ${now}\n\n` +
+      `đŸ’° LÆ°Æ¡ng Ä‘Ă£ cĂ³: ${formatter.format(advance.earnedSalary)} Ä‘\n` +
+      `đŸ”– Má»©c á»©ng tá»‘i Ä‘a (50%): ${formatter.format(advance.maxAllowed)} Ä‘\n` +
+      `đŸ’µ *Sá»‘ tiá»n muá»‘n á»©ng: ${formatter.format(advance.amount)} Ä‘*\n` +
+      (advance.note ? `đŸ“ Ghi chĂº: ${advance.note}\n` : '') +
+      `\nID phiáº¿u: \`${advance.id}\``;
 
     await bot.sendMessage(chatId, message, {
       parse_mode: 'Markdown',
       reply_markup: {
         inline_keyboard: [
           [
-            { text: '✅ Duyệt & chi tiền', callback_data: `approve_advance_${advance.id}` },
-            { text: '❌ Từ chối', callback_data: `reject_advance_${advance.id}` }
+            { text: 'âœ… Duyá»‡t & chi tiá»n', callback_data: `approve_advance_${advance.id}` },
+            { text: 'âŒ Tá»« chá»‘i', callback_data: `reject_advance_${advance.id}` }
           ]
         ]
       }
@@ -250,16 +252,16 @@ export async function sendKaraboxCheckoutNotification(session: any, roomName: st
     const duration = session.durationHours ? session.durationHours.toFixed(1) : '0.0';
     
     const message =
-      `🎤 *THANH TOÁN KARABOX* 🎤\n\n` +
-      `🏠 Phòng: *${roomName}*\n` +
-      `🕒 Thời gian: ${timeStr}\n` +
-      `⏳ Tổng giờ hát: ${duration} giờ\n` +
-      `💵 Tiền giờ: ${formatter.format(session.roomTotal || 0)}đ\n` +
-      `💸 Phụ thu/Giảm giá: ${formatter.format((session.surcharge || 0) - (session.discount || 0))}đ\n` +
-      `💰 *TỔNG THU: ${formatter.format(session.totalAmount || 0)}đ*\n` +
-      `💳 Hình thức: ${session.paymentMethod || 'Tiền mặt'}\n` +
-      `👨‍💼 Thu ngân: ${session.checkoutEmployee || 'Không rõ'}\n` +
-      (session.notes ? `📝 Ghi chú: ${session.notes}` : '');
+      `đŸ¤ *THANH TOĂN KARABOX* đŸ¤\n\n` +
+      `đŸ  PhĂ²ng: *${roomName}*\n` +
+      `đŸ•’ Thá»i gian: ${timeStr}\n` +
+      `â³ Tá»•ng giá» hĂ¡t: ${duration} giá»\n` +
+      `đŸ’µ Tiá»n giá»: ${formatter.format(session.roomTotal || 0)}Ä‘\n` +
+      `đŸ’¸ Phá»¥ thu/Giáº£m giĂ¡: ${formatter.format((session.surcharge || 0) - (session.discount || 0))}Ä‘\n` +
+      `đŸ’° *Tá»”NG THU: ${formatter.format(session.totalAmount || 0)}Ä‘*\n` +
+      `đŸ’³ HĂ¬nh thá»©c: ${session.paymentMethod || 'Tiá»n máº·t'}\n` +
+      `đŸ‘¨â€đŸ’¼ Thu ngĂ¢n: ${session.checkoutEmployee || 'KhĂ´ng rĂµ'}\n` +
+      (session.notes ? `đŸ“ Ghi chĂº: ${session.notes}` : '');
 
     await bot.sendMessage(chatId, message, {
       parse_mode: 'Markdown'
@@ -268,4 +270,5 @@ export async function sendKaraboxCheckoutNotification(session: any, roomName: st
     console.error('Error sending karabox notification:', error);
   }
 }
+
 
