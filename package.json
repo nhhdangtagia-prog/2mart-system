@@ -2,7 +2,7 @@
   "name": "2mart-erp",
   "version": "0.1.0",
   "private": true,
-  "packageManager": "pnpm@11.17.0",
+  "packageManager": "pnpm@9.1.0",
   "scripts": {
     "build": "turbo run build",
     "dev": "turbo run dev",
@@ -36,4 +36,5 @@
     ]
   }
 }
+
 
