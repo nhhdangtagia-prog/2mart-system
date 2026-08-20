@@ -1,4 +1,4 @@
-{
+﻿{
   "name": "2mart-erp",
   "version": "0.1.0",
   "private": true,
@@ -17,7 +17,7 @@
     "turbo": "^2.0.0"
   },
   "engines": {
-    "node": ">=18",
+    "node": ">=20",
     "pnpm": ">=8"
   },
   "overrides": {
@@ -36,3 +36,4 @@
     ]
   }
 }
+
