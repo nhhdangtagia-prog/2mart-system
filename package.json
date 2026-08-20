@@ -11,7 +11,7 @@
                     "validate:architecture":  "turbo run validate:architecture",
                     "prepare":  "husky install",
                     "start":  "pnpm --filter api start",
-                    "build":  "turbo run build --filter=!api"
+                    "build":  "turbo run build --filter=admin --filter=pos"
                 },
     "devDependencies":  {
                             "husky":  "^8.0.0",
