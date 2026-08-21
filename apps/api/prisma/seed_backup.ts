@@ -210,7 +210,9 @@ async function main() {
                         netPayable: parseFloat(row.netPayable) || 0,
                         status: row.status || 'COMPLETED',
                         note: row.note || null,
-                        expectedDate: row.expectedDate || null
+                        expectedDate: row.expectedDate || null,
+                        creator: row.creator || 'Auto'
+
                     }
                 });
             } catch (e) {
@@ -262,4 +264,5 @@ async function main() {
 }
 
 main().catch(console.error).finally(() => prisma.$disconnect());
+
 
